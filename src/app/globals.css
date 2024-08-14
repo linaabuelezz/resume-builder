@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+  
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -16,18 +17,34 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* styles/globals.css */
+.container {
+  @apply flex;
+}
+
+.left {
+  @apply w-1/2 p-4;
+}
+
+.right {
+  @apply w-1/2 p-4;
+}
+
+.form label {
+  @apply block mb-2;
+}
+
+.form input {
+  @apply block mb-4 w-full;
+}
+
+.form button {
+  @apply mt-2;
 }
