@@ -6,6 +6,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { DialogueContext } from "@/hooks/DialogueContext";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useContext } from "react";
 
 const SocialLinksDialog = () => {
@@ -16,10 +18,11 @@ const SocialLinksDialog = () => {
     <Dialog open={modalType === "sociallinks" && isModalOpen} onOpenChange={closeModal}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle className="mb-3">Add a social link</DialogTitle>
+          <Label>Link</Label>
+          <Input></Input>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            This section allows you to provide links to some of your social profiles. It is a good idea to add Github and LinkedIn.
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
