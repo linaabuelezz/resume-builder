@@ -10,10 +10,13 @@ import { useContext, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button"; 
+import { ResumeContext } from "@/hooks/ResumeContext";
 
 const ProjectsDialog = () => {
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
   const [descriptionPoints, setDescriptionPoints] = useState([""]);
+  const { setProjects, projects } = useContext(ResumeContext);
+  const [projectName, setProjectName] = useState("");
 
   const handleAddPoint = () => {
     if (descriptionPoints.length < 5) {
@@ -27,13 +30,24 @@ const ProjectsDialog = () => {
     setDescriptionPoints(newPoints);
   };
 
+  const saveProject = () => {
+    const newProject = {
+      projectName,
+      projectPoints: descriptionPoints.filter(point => point.trim() !== ""), 
+    };
+    setProjects([...projects, newProject]);
+    closeModal();
+    setProjectName(""); 
+    setDescriptionPoints([""]); 
+  };
+
   return (
     <Dialog open={modalType === "projects" && isModalOpen} onOpenChange={closeModal}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="mb-3">Add a project</DialogTitle>
           <Label>Project Name</Label>
-          <Input />
+          <Input value={projectName} onChange={(e) => setProjectName(e.target.value)} />
           <Label>Project Description points</Label>
           {descriptionPoints.map((point, index) => (
             <Input
@@ -48,6 +62,7 @@ const ProjectsDialog = () => {
               + Add Point
             </Button>
           )}
+          <Button onClick={saveProject}>Save</Button>
           <DialogDescription>
             This will be added under the projects section of your resume. Each point should describe your job in some way.
           </DialogDescription>

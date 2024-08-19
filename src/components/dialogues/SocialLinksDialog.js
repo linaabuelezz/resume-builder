@@ -8,23 +8,37 @@ import {
 import { DialogueContext } from "@/hooks/DialogueContext";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ResumeContext } from "@/hooks/ResumeContext";
 
 const SocialLinksDialog = () => {
+  const { socialLinks, setSocialLinks } = useContext(ResumeContext)
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
-  console.log(modalType, isModalOpen);
+  const [link, setLink] = useState("");
+
+  const saveLink = () => {
+    setSocialLinks([...socialLinks, link]);
+    setLink("");
+    closeModal();
+  }
 
   return (
-    <Dialog open={modalType === "sociallinks" && isModalOpen} onOpenChange={closeModal}>
+    <Dialog
+      open={modalType === "sociallinks" && isModalOpen}
+      onOpenChange={closeModal}
+    >
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="mb-3">Add a social link</DialogTitle>
           <Label>Link</Label>
-          <Input></Input>
+          <Input value={link} onChange={(e) => setLink(e.target.value)}></Input>
           <DialogDescription>
-            This section allows you to provide links to some of your social profiles. It is a good idea to add Github and LinkedIn.
+            This section allows you to provide links to some of your social
+            profiles. It is a good idea to add Github and LinkedIn.
           </DialogDescription>
         </DialogHeader>
+        <Button className="mt-2" onClick={saveLink}>Save</Button>
       </DialogContent>
     </Dialog>
   );

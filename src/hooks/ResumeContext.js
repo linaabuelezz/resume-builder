@@ -3,12 +3,13 @@ import React, { createContext, useState } from "react";
 export const ResumeContext = createContext();
 
 export const ResumeProvider = ({children}) => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const [name, setName] = useState("Jane Doe");
+    const [email, setEmail] = useState("janeDoe@gmail.com");
+    const [phoneNumber, setPhoneNumber] = useState("0123456789");
     const [socialLinks, setSocialLinks] = useState([""]);
-    const [education, setEducation] = useState("");
-    const [gpa, setGpa] = useState("");
+    const [education, setEducation] = useState("University of Chicago");
+    const [gpa, setGpa] = useState("3.5");
+    const [skills, setSkills] = useState([])
     const [experiences, setExperience] = useState([{}]);
     const [projects, setProjects] = useState([{}]);
 
@@ -21,6 +22,7 @@ export const ResumeProvider = ({children}) => {
             socialLinks, setSocialLinks,
             education, setEducation,
             gpa, setGpa,
+            skills, setSkills,
             experiences, setExperience,
             projects, setProjects
         }}

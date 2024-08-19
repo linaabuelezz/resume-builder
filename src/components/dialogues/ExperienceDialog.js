@@ -10,12 +10,15 @@ import {
   import { Input } from "@/components/ui/input";
   import { Label } from "@/components/ui/label";
   import { Button } from "@/components/ui/button";
+  import { ResumeContext } from "@/hooks/ResumeContext";
 
   
   const ExperienceDialog = () => {
     const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
     console.log(modalType, isModalOpen);
     const [descriptionPoints, setDescriptionPoints] = useState([""]);
+    const { setExperience, experiences } = useContext(ResumeContext);
+    const [experienceName, setExperienceName] = useState("");
 
     const handleAddPoint = () => {
       if (descriptionPoints.length < 5) {
@@ -27,6 +30,17 @@ import {
       const newPoints = [...descriptionPoints];
       newPoints[index] = value;
       setDescriptionPoints(newPoints);
+    };
+
+    const saveExperience = () => {
+      const newExperience = {
+        experienceName,
+        experiencePoints: descriptionPoints.filter(point => point.trim() !== ""), 
+      };
+      setExperience([...experiences, newExperience]);
+      closeModal();
+      setExperienceName(""); 
+      setDescriptionPoints([""]); 
     };
   
     return (
@@ -52,6 +66,7 @@ import {
               + Add Point
             </Button>
           )}
+          <Button onClick={saveExperience}>Save</Button>
           <DialogDescription>
             This will be added under the experience section of your resume. Each point should describe your project in some way. It is a good idea to use numbers.
           </DialogDescription>

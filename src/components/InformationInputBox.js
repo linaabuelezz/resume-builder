@@ -42,18 +42,18 @@ const InformationInputBox = () => {
         <div className="form">
             <label>
                 Name:
-                <input className="bg-blue-50 rounded-md p-1" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <input defaultValue= "Jane Doe" className="bg-blue-50 rounded-md p-1" type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </label>
             <label>
                 Email:
-                <input className="bg-blue-50 rounded-md p-1" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input defaultValue="janeDoe@gmail.com" className="bg-blue-50 rounded-md p-1" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>
                 Phone number:
                 <input className="bg-blue-50 rounded-md p-1" type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
             </label>
             <label>
-                <button className="text-white font-semibold p-2 bg-blue-700 rounded-md hover:scale-105" onClick={() => {openModal("sociallinks");}}>Add social link</button>
+                <button className="text-white font-semibold p-2 bg-black rounded-md hover:scale-105" onClick={() => {openModal("sociallinks");}}>Add social link</button>
             </label>
             <label>
                 Education:
@@ -64,10 +64,10 @@ const InformationInputBox = () => {
                 <input className="bg-blue-50 rounded-md p-1" type="text" value={gpa} onChange={(e) => setGpa(e.target.value)} />
             </label>
             <label>
-                <button className="text-white bg-blue-700 rounded-md font-semibold hover:scale-105 p-2" onClick={() => {openModal("experience");}}>Add experience</button>
+                <button className="text-white bg-black rounded-md font-semibold hover:scale-105 p-2" onClick={() => {openModal("experience");}}>Add experience</button>
             </label>
             <label>
-                <button className="text-white bg-blue-700 rounded-md font-semibold p-2 hover:scale-105" onClick={() => {openModal("projects");}}>Add project</button>
+                <button className="text-white bg-black rounded-md font-semibold p-2 hover:scale-105" onClick={() => {openModal("projects");}}>Add project</button>
             </label>
         </div>
     )
