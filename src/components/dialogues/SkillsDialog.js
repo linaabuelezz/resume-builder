@@ -28,14 +28,32 @@ const SkillsDialog = () => {
 
   const saveSkill = () => {
     if (selectedSection && skill) {
-      setSkills((prevSkills) => ({
-        ...prevSkills,
-        [selectedSection]: [...prevSkills[selectedSection], skill],
-      }));
+      const defaultSkills = {
+        Languages: ["HTML", "CSS", "JavaScript"],
+        Frameworks: [],
+        Libraries: [],
+      };
+
+      if (
+        skills[selectedSection].length === defaultSkills[selectedSection].length &&
+        skills[selectedSection].every((item, index) => item === defaultSkills[selectedSection][index])
+      ) {
+        // Replace default skills if it's the initial state
+        setSkills((prevSkills) => ({
+          ...prevSkills,
+          [selectedSection]: [skill],
+        }));
+      } else {
+        setSkills((prevSkills) => ({
+          ...prevSkills,
+          [selectedSection]: [...prevSkills[selectedSection], skill],
+        }));
+      }
+
       setSkill("");
       closeModal();
     }
-};
+  };
 
 
   return (
