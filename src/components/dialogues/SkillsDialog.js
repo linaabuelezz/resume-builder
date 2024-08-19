@@ -38,7 +38,6 @@ const SkillsDialog = () => {
         skills[selectedSection].length === defaultSkills[selectedSection].length &&
         skills[selectedSection].every((item, index) => item === defaultSkills[selectedSection][index])
       ) {
-        // Replace default skills if it's the initial state
         setSkills((prevSkills) => ({
           ...prevSkills,
           [selectedSection]: [skill],

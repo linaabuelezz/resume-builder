@@ -17,7 +17,7 @@ const CDN_URL = 'https://cdn.brandfetch.io/';
 const SocialLinksDialog = () => {
   const { socialLinks, setSocialLinks } = useContext(ResumeContext);
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
-  const [link, setLink] = useState("https://github.com/linaabuelezz");
+  const [link, setLink] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
 
   const getDomainFromUrl = (url) => {
