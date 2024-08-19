@@ -38,13 +38,17 @@ import {
         jobPosition,
         experiencePoints: descriptionPoints.filter(point => point.trim() !== ""), 
       };
-      setExperience([...experiences, newExperience]);
-      console.log(experiences);
+      if (experiences.length === 1 && experiences[0].companyName === "Company name") {
+        setExperience([newExperience]);
+      } else {
+        setExperience([...experiences, newExperience]);
+      }
       closeModal();
       setCompanyName(""); 
       setJobPosition("");
       setDescriptionPoints([""]); 
     };
+
   
     return (
       <Dialog open={modalType === "experience" && isModalOpen} onOpenChange={closeModal}>

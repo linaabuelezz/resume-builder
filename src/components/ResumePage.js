@@ -68,9 +68,9 @@ const Resume = () => {
     {experiences?.map((experience, index) => (
       <li key={index} className="mb-2">
         <h3 key={index}>
-          <span className="font-bold">{experience.companyName}</span>
+          <span className="font-bold text-md">{experience.companyName}</span>
           {experience.companyName && experience.jobPosition && ' | '}
-          <span className="text-sm">{experience.jobPosition}</span>
+          <span className="text-md">{experience.jobPosition}</span>
         </h3>
         <ul className="ml-4 list-disc">
           {experience.experiencePoints?.map((point, pointIndex) => (
@@ -90,7 +90,7 @@ const Resume = () => {
         <ul>
           {projects.map((project, index) => (
             <li key={index} className="mb-2">
-              <h3 className="font-bold">{project.projectName}</h3>
+              <h3 className="font-bold text-md">{project.projectName}</h3>
               <ul className="ml-4 list-disc">
                 {project.projectPoints?.map((point, pointIndex) => (
                   <li key={pointIndex} className="text-sm">

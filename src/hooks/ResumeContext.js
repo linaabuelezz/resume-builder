@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const ResumeContext = createContext();
 
@@ -16,6 +16,15 @@ export const ResumeProvider = ({ children }) => {
   });
   const [experiences, setExperience] = useState([{}]);
   const [projects, setProjects] = useState([{}]);
+  const [isFirstOpen, setIsFirstOpen] = useState(true);
+
+  useEffect(() => {
+    if (isFirstOpen) {
+      setProjects([{ projectName: "Default Project", projectPoints: ["Initial point 1", "Initial point 2"] }]);
+      setExperience([{companyName: "Company name", jobPosition: "Intern", experiencePoints: ["Initial point 1", "Initial point 2"]}]);
+      setIsFirstOpen(false);
+    }
+  }, [isFirstOpen]);
 
   return (
     <ResumeContext.Provider

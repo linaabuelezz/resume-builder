@@ -12,11 +12,12 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button"; 
 import { ResumeContext } from "@/hooks/ResumeContext";
 
+
 const ProjectsDialog = () => {
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
-  const [descriptionPoints, setDescriptionPoints] = useState([""]);
   const { setProjects, projects } = useContext(ResumeContext);
   const [projectName, setProjectName] = useState("");
+  const [descriptionPoints, setDescriptionPoints] = useState([""]);
 
   const handleAddPoint = () => {
     if (descriptionPoints.length < 5) {
@@ -35,7 +36,13 @@ const ProjectsDialog = () => {
       projectName,
       projectPoints: descriptionPoints.filter(point => point.trim() !== ""), 
     };
-    setProjects([...projects, newProject]);
+
+    if (projects.length === 1 && projects[0].projectName === "Default Project") {
+      setProjects([newProject]);
+    } else {
+      setProjects([...projects, newProject]);
+    }
+
     closeModal();
     setProjectName(""); 
     setDescriptionPoints([""]); 
