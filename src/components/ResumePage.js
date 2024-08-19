@@ -30,13 +30,16 @@ const Resume = () => {
       <div>
         <ul>
           {socialLinks.map((link, index) => (
-            <li
-              key={index}
-              onClick={() => openLink(link)}
-              className="text-center text-sm hover:text-blue-700 text-blue-500 hover:cursor-pointer"
-            >
-              {link}
-            </li>
+            <div className="flex align-middle">
+                <img src={link.logo} style={{ maxWidth: '20px', maxHeight: '20px' }}></img>
+              <li
+                key={index}
+                onClick={() => openLink(link)}
+                className="text-center text-sm hover:text-blue-700 text-blue-500 hover:cursor-pointer"
+              >
+                {link.link}
+              </li>
+            </div>
           ))}
         </ul>
       </div>
@@ -51,38 +54,44 @@ const Resume = () => {
       <div>
         <h2 className="font-semibold text-xl">Skills</h2>
         <hr className="bg-black h-0.5" />
-        {Object.keys(skills).map((section) => (
-        !isSectionEmpty(section) && (
-          <div key={section} className="mb-4">
-            <h3 className="font-semibold">
-              {section}: <span className="font-normal text-sm">{skills[section].join(", ")} </span>
-            </h3>
-          </div>
-        )
-      ))}
+        {Object.keys(skills).map(
+          (section) =>
+            !isSectionEmpty(section) && (
+              <div key={section} className="mb-4">
+                <h3 className="font-semibold">
+                  {section}:{" "}
+                  <span className="font-normal text-sm">
+                    {skills[section].join(", ")}{" "}
+                  </span>
+                </h3>
+              </div>
+            )
+        )}
       </div>
       <div>
-  <h2 className="font-semibold text-xl">Experience</h2>
-  <hr className="bg-black h-0.5" />
-  <ul>
-    {experiences?.map((experience, index) => (
-      <li key={index} className="mb-2">
-        <h3 key={index}>
-          <span className="font-bold text-md">{experience.companyName}</span>
-          {experience.companyName && experience.jobPosition && ' | '}
-          <span className="text-md">{experience.jobPosition}</span>
-        </h3>
-        <ul className="ml-4 list-disc">
-          {experience.experiencePoints?.map((point, pointIndex) => (
-            <li key={pointIndex} className="text-sm">
-              {point}
+        <h2 className="font-semibold text-xl">Experience</h2>
+        <hr className="bg-black h-0.5" />
+        <ul>
+          {experiences?.map((experience, index) => (
+            <li key={index} className="mb-2">
+              <h3 key={index}>
+                <span className="font-bold text-md">
+                  {experience.companyName}
+                </span>
+                {experience.companyName && experience.jobPosition && " | "}
+                <span className="text-md">{experience.jobPosition}</span>
+              </h3>
+              <ul className="ml-4 list-disc">
+                {experience.experiencePoints?.map((point, pointIndex) => (
+                  <li key={pointIndex} className="text-sm">
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
-      </li>
-    ))}
-  </ul>
-</div>
+      </div>
 
       <div>
         <h2 className="font-semibold text-xl">Projects</h2>

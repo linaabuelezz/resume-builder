@@ -6,7 +6,7 @@ export const ResumeProvider = ({ children }) => {
   const [name, setName] = useState("Jane Doe");
   const [email, setEmail] = useState("janeDoe@gmail.com");
   const [phoneNumber, setPhoneNumber] = useState("0123456789");
-  const [socialLinks, setSocialLinks] = useState([""]);
+  const [socialLinks, setSocialLinks] = useState([{}]);
   const [education, setEducation] = useState("University of Chicago");
   const [gpa, setGpa] = useState("3.5");
   const [skills, setSkills] = useState({
