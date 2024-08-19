@@ -6,6 +6,7 @@ import { DialogueProvider } from "@/hooks/DialogueContext";
 import SocialLinksDialog from "@/components/dialogues/SocialLinksDialog";
 import ExperienceDialog from "@/components/dialogues/ExperienceDialog"
 import ProjectsDialog from "@/components/dialogues/ProjectsDialog";
+import SkillsDialog from "@/components/dialogues/SkillsDialog";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
           </div>
           <div className="right">
             <SocialLinksDialog />
+            <SkillsDialog />
             <ExperienceDialog />
             <ProjectsDialog />
             <InformationInputBox />

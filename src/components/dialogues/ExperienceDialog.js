@@ -15,10 +15,10 @@ import {
   
   const ExperienceDialog = () => {
     const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
-    console.log(modalType, isModalOpen);
-    const [descriptionPoints, setDescriptionPoints] = useState([""]);
     const { setExperience, experiences } = useContext(ResumeContext);
-    const [experienceName, setExperienceName] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [jobPosition, setJobPosition] = useState("")
+    const [descriptionPoints, setDescriptionPoints] = useState([""]);
 
     const handleAddPoint = () => {
       if (descriptionPoints.length < 5) {
@@ -34,12 +34,15 @@ import {
 
     const saveExperience = () => {
       const newExperience = {
-        experienceName,
+        companyName,
+        jobPosition,
         experiencePoints: descriptionPoints.filter(point => point.trim() !== ""), 
       };
       setExperience([...experiences, newExperience]);
+      console.log(experiences);
       closeModal();
-      setExperienceName(""); 
+      setCompanyName(""); 
+      setJobPosition("");
       setDescriptionPoints([""]); 
     };
   
@@ -49,9 +52,9 @@ import {
         <DialogHeader>
           <DialogTitle className="mb-3">Add an experience</DialogTitle>
           <Label>Company name</Label>
-          <Input />
+          <Input value={companyName} onChange={(e) => {setCompanyName(e.target.value)}} />
           <Label>Job position</Label>
-          <Input />
+          <Input value={jobPosition} onChange={(e) => {setJobPosition(e.target.value)}} />
           <Label>Job description points</Label>
           {descriptionPoints.map((point, index) => (
             <Input

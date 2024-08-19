@@ -20,23 +20,23 @@ const InformationInputBox = () => {
     } = useContext(ResumeContext);
 
 
-    const handleSocialLinksChange = (index, value) => {
-        const newLinks = [...socialLinks];
-        newLinks[index] = value;
-        setSocialLinks(newLinks);
-    };
+    // const handleSocialLinksChange = (index, value) => {
+    //     const newLinks = [...socialLinks];
+    //     newLinks[index] = value;
+    //     setSocialLinks(newLinks);
+    // };
 
-    const handleExperienceChange = (index, value) => {
-        const newExperience = [...experiences];
-        newExperience[index] = value;
-        setExperience(newExperience);
-    };
+    // const handleExperienceChange = (index, value) => {
+    //     const newExperience = [...experiences];
+    //     newExperience[index] = value;
+    //     setExperience(newExperience);
+    // };
 
-    const handleProjectsChange = (index, value) => {
-        const newProjects = [...projects];
-        newProjects[index] = value;
-        setProjects(newProjects);
-    }
+    // const handleProjectsChange = (index, value) => {
+    //     const newProjects = [...projects];
+    //     newProjects[index] = value;
+    //     setProjects(newProjects);
+    // }
 
     return (
         <div className="form">
@@ -54,6 +54,9 @@ const InformationInputBox = () => {
             </label>
             <label>
                 <button className="text-white font-semibold p-2 bg-black rounded-md hover:scale-105" onClick={() => {openModal("sociallinks");}}>Add social link</button>
+            </label>
+            <label>
+                <button className="text-white font-semibold p-2 bg-black rounded-md hover:scale-105" onClick={() => {openModal("skillset");}}>Add skill</button>
             </label>
             <label>
                 Education:
