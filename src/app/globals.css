@@ -48,3 +48,8 @@
 .form button {
   @apply mt-2;
 }
+
+.group:hover .group-hover\:block {
+  display: block;
+}
+

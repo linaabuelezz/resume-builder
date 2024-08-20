@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ResumeContext } from "@/hooks/ResumeContext";
 import { DialogueContext } from "@/hooks/DialogueContext";
+import { v4 as uuidv4 } from 'uuid';
 
 const ExperienceDialog = () => {
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
@@ -62,6 +63,7 @@ const ExperienceDialog = () => {
 
   const saveExperience = () => {
     const newExperience = {
+      id: uuidv4(),
       companyName,
       jobPosition,
       experiencePoints: descriptionPoints.filter(

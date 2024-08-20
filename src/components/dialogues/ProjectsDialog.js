@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ResumeContext } from "@/hooks/ResumeContext";
 import { DialogueContext } from "@/hooks/DialogueContext";
+import { v4 as uuidv4 } from 'uuid';
 
 const ProjectsDialog = () => {
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
@@ -48,6 +49,7 @@ const ProjectsDialog = () => {
 
   const saveProject = () => {
     const newProject = {
+      id: uuidv4(),
       projectName,
       startDate: `${startMonth} ${startYear}`,
       endDate: `${endMonth} ${endYear}`,
@@ -56,8 +58,10 @@ const ProjectsDialog = () => {
 
     if (projects.length === 1 && projects[0].projectName === "Default Project") {
       setProjects([newProject]);
+      console.log(projects);
     } else {
       setProjects([...projects, newProject]);
+      console.log(projects);
     }
 
     closeModal();

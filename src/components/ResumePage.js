@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { ResumeContext } from "@/hooks/ResumeContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 const Resume = () => {
   const {
@@ -86,10 +88,10 @@ const Resume = () => {
         <h2 className="font-bold text-xl">Experience</h2>
         <hr className="bg-black h-0.5 mb-1" />
         <ul>
-          {experiences?.map((experience, index) => (
-            <li key={index} className="mb-2">
+          {experiences?.map((experience, _) => (
+            <li key={experience.id} className="mb-2 relative group">
               <div className="flex justify-between items-center">
-                <h3 key={index}>
+                <h3>
                   <span className="font-semibold text-md">
                     {experience.companyName}
                   </span>
@@ -107,6 +109,12 @@ const Resume = () => {
                   </li>
                 ))}
               </ul>
+              <button
+                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
+                onClick={() => handleEdit(experience, "experience")}
+              >
+                <FontAwesomeIcon icon={faEdit} />
+              </button>
             </li>
           ))}
         </ul>
@@ -116,8 +124,8 @@ const Resume = () => {
         <h2 className="font-bold text-xl">Projects</h2>
         <hr className="bg-black h-0.5 mb-1" />
         <ul>
-          {projects.map((project, index) => (
-            <li key={index} className="mb-2">
+          {projects.map((project, _) => (
+            <li key={project.id} className="mb-2 relative group">
               <div className="flex justify-between items-center">
                 <h3 className="font-semibold text-md">{project.projectName}</h3>
                 <p className="text-sm">
@@ -131,6 +139,13 @@ const Resume = () => {
                   </li>
                 ))}
               </ul>
+              {/* Edit Button */}
+              <button
+                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
+                onClick={() => handleEdit(project, "project")}
+              >
+                <FontAwesomeIcon icon={faEdit} />
+              </button>
             </li>
           ))}
         </ul>
