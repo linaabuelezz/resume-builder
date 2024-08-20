@@ -105,7 +105,7 @@ const Resume = () => {
                   {experience.companyName && experience.jobPosition && " | "}
                   <span className="text-md">{experience.jobPosition}</span>
                 </h3>
-                <p className="text-sm">
+                <p className="text-sm group-hover:hidden">
                   {experience.startDate} - {experience.endDate}
                 </p>
               </div>
@@ -153,7 +153,7 @@ const Resume = () => {
             <li key={project.id} className="mb-2 relative group">
               <div className="flex justify-between items-center">
                 <h3 className="font-semibold text-md">{project.projectName}</h3>
-                <p className="text-sm">
+                <p className="text-sm group-hover:hidden">
                   {project.startDate} - {project.endDate}
                 </p>
               </div>
