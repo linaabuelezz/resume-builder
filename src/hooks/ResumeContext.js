@@ -20,8 +20,8 @@ export const ResumeProvider = ({ children }) => {
 
   useEffect(() => {
     if (isFirstOpen) {
-      setProjects([{ projectName: "Default Project", startDate: "Jan 2024", endDate: "Feb 2024", projectPoints: ["Initial point 1", "Initial point 2"] }]);
-      setExperience([{companyName: "Company name", jobPosition: "Intern", startDate: "Mar 2023", endDate: "Dec 2023", experiencePoints: ["Initial point 1", "Initial point 2"]}]);
+      setProjects([{id: "1", projectName: "Default Project", startDate: "Jan 2024", endDate: "Feb 2024", projectPoints: ["Initial point 1", "Initial point 2"] }]);
+      setExperience([{id: "1", companyName: "Company name", jobPosition: "Intern", startDate: "Mar 2023", endDate: "Dec 2023", experiencePoints: ["Initial point 1", "Initial point 2"]}]);
       setSkills({Languages: ["HTML", "CSS", "JavaScript"],
         Frameworks: [],
         Libraries: []

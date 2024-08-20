@@ -5,10 +5,12 @@ export const DialogueContext = createContext(null);
 export const DialogueProvider = ({ children }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
+  const [buttonType, setButtonType] = useState("");
 
-  const openModal = (type) => {
+  const openModal = (modalType, buttonType) => {
     setModalOpen(true);
-    setModalType(type);
+    setModalType(modalType);
+    setButtonType(buttonType);
   };
 
   const closeModal = () => {
@@ -17,7 +19,7 @@ export const DialogueProvider = ({ children }) => {
 
   return (
     <DialogueContext.Provider
-      value={{ isModalOpen, modalType, openModal, closeModal }}
+      value={{ isModalOpen, modalType, buttonType, openModal, closeModal }}
     >
       {children}
     </DialogueContext.Provider>

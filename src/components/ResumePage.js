@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { ResumeContext } from "@/hooks/ResumeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { handleExperienceDelete, handleExperienceEdit, handleProjectDelete, handleProjectEdit } from "./functions/FunctionHelpers";
 
 const Resume = () => {
   const {
@@ -110,10 +111,16 @@ const Resume = () => {
                 ))}
               </ul>
               <button
-                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
-                onClick={() => handleEdit(experience, "experience")}
+                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded"
+                onClick={() => handleExperienceEdit(experience.id)}
               >
                 <FontAwesomeIcon icon={faEdit} />
+              </button>
+              <button 
+              className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
+              onClick={() => handleExperienceDelete(experience.id)}
+              >
+                <FontAwesomeIcon icon={faTrashCan} />
               </button>
             </li>
           ))}
@@ -141,10 +148,16 @@ const Resume = () => {
               </ul>
               {/* Edit Button */}
               <button
-                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
-                onClick={() => handleEdit(project, "project")}
+                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded"
+                onClick={() => handleProjectEdit(project.id)}
               >
                 <FontAwesomeIcon icon={faEdit} />
+              </button>
+              <button 
+              className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
+              onClick={() => handleProjectDelete(project.id)}
+              >
+                <FontAwesomeIcon icon={faTrashCan} />
               </button>
             </li>
           ))}
