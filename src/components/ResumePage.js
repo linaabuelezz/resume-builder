@@ -14,7 +14,9 @@ const Resume = () => {
     gpa,
     skills,
     experiences,
+    setExperience,
     projects,
+    setProjects
   } = useContext(ResumeContext);
 
   const openLink = (link) => {
@@ -112,13 +114,13 @@ const Resume = () => {
               </ul>
               <button
                 className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded"
-                onClick={() => handleExperienceEdit(experience.id)}
+                onClick={() => handleExperienceEdit(experience.id, experiences, setExperience)}
               >
                 <FontAwesomeIcon icon={faEdit} />
               </button>
               <button 
               className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
-              onClick={() => handleExperienceDelete(experience.id)}
+              onClick={() => handleExperienceDelete(experience.id, experiences, setExperience)}
               >
                 <FontAwesomeIcon icon={faTrashCan} />
               </button>
@@ -149,13 +151,13 @@ const Resume = () => {
               {/* Edit Button */}
               <button
                 className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded"
-                onClick={() => handleProjectEdit(project.id)}
+                onClick={() => handleProjectEdit(project.id, projects, setProjects)}
               >
                 <FontAwesomeIcon icon={faEdit} />
               </button>
               <button 
               className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
-              onClick={() => handleProjectDelete(project.id)}
+              onClick={() => handleProjectDelete(project.id, projects, setProjects)}
               >
                 <FontAwesomeIcon icon={faTrashCan} />
               </button>

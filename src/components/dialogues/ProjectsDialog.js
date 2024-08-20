@@ -21,7 +21,7 @@ import { DialogueContext } from "@/hooks/DialogueContext";
 import { v4 as uuidv4 } from 'uuid';
 
 const ProjectsDialog = () => {
-  const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
+  const { isModalOpen, closeModal, modalType, buttonType } = useContext(DialogueContext);
   const { setProjects, projects } = useContext(ResumeContext);
   const [projectName, setProjectName] = useState("");
   const [descriptionPoints, setDescriptionPoints] = useState([""]);
@@ -29,7 +29,7 @@ const ProjectsDialog = () => {
   const [startYear, setStartYear] = useState("");
   const [endMonth, setEndMonth] = useState("");
   const [endYear, setEndYear] = useState("");
-  const years = Array.from(new Array(100), (val, index) => (new Date().getFullYear() - index).toString());
+  const years = Array.from(new Array(100), (_, index) => (new Date().getFullYear() - index).toString());
   const months = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
