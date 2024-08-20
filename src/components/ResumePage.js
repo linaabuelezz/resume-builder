@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import { ResumeContext } from "@/hooks/ResumeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { handleExperienceDelete, handleExperienceEdit, handleProjectDelete, handleProjectEdit } from "./functions/FunctionHelpers";
-
+import {
+  handleExperienceDelete,
+  handleProjectDelete,
+} from "./functions/FunctionHelpers";
+import { useDialogActions } from "@/hooks/UseDialogActions";
 const Resume = () => {
+  const { handleProjectEdit, handleExperienceEdit } = useDialogActions();
   const {
     name,
     email,
@@ -16,7 +20,7 @@ const Resume = () => {
     experiences,
     setExperience,
     projects,
-    setProjects
+    setProjects,
   } = useContext(ResumeContext);
 
   const openLink = (link) => {
@@ -113,14 +117,26 @@ const Resume = () => {
                 ))}
               </ul>
               <button
-                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded"
-                onClick={() => handleExperienceEdit(experience.id, experiences, setExperience)}
+                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                onClick={() =>
+                  handleExperienceEdit(
+                    experience.id,
+                    experiences,
+                    setExperience
+                  )
+                }
               >
                 <FontAwesomeIcon icon={faEdit} />
               </button>
-              <button 
-              className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
-              onClick={() => handleExperienceDelete(experience.id, experiences, setExperience)}
+              <button
+                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                onClick={() =>
+                  handleExperienceDelete(
+                    experience.id,
+                    experiences,
+                    setExperience
+                  )
+                }
               >
                 <FontAwesomeIcon icon={faTrashCan} />
               </button>
@@ -150,14 +166,18 @@ const Resume = () => {
               </ul>
               {/* Edit Button */}
               <button
-                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded"
-                onClick={() => handleProjectEdit(project.id, projects, setProjects)}
+                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                onClick={() => {
+                  handleProjectEdit(project.id, projects, setProjects);
+                }}
               >
                 <FontAwesomeIcon icon={faEdit} />
               </button>
-              <button 
-              className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded"
-              onClick={() => handleProjectDelete(project.id, projects, setProjects)}
+              <button
+                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                onClick={() =>
+                  handleProjectDelete(project.id, projects, setProjects)
+                }
               >
                 <FontAwesomeIcon icon={faTrashCan} />
               </button>

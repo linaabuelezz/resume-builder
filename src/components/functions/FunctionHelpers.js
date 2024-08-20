@@ -1,12 +1,12 @@
 
 
-export const handleProjectEdit = (projectId, projects, setProjects) => {
-    console.log(`clicked ${projectId}`);
-};
+// export const handleProjectEdit = (projectId, projects, setProjects) => {
+//     console.log(`clicked ${projectId}`);
+// };
 
-export const handleExperienceEdit = (experienceId, experiences, setExperiences) => {
-    console.log(`clicked ${experienceId}`);
-};
+// export const handleExperienceEdit = (experienceId, experiences, setExperiences) => {
+//     console.log(`clicked ${experienceId}`);
+// };
 
 export const handleProjectDelete = (projectId, projects, setProjects) => {
     const updatedProjects = projects.filter(project => project.id !== projectId)
