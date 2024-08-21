@@ -17,6 +17,8 @@ export const ResumeProvider = ({ children }) => {
   const [experiences, setExperience] = useState([{}]);
   const [projects, setProjects] = useState([{}]);
   const [isFirstOpen, setIsFirstOpen] = useState(true);
+  const [projectToEdit, setProjectToEdit] = useState(null);
+  const [experienceToEdit, setExperienceToEdit] = useState(null);
 
   useEffect(() => {
     if (isFirstOpen) {
@@ -51,6 +53,10 @@ export const ResumeProvider = ({ children }) => {
         setExperience,
         projects,
         setProjects,
+        projectToEdit,
+        setProjectToEdit,
+        experienceToEdit,
+        setExperienceToEdit
       }}
     >
       {children}

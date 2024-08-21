@@ -66,7 +66,7 @@ const Resume = () => {
           )}
       </div>
 
-      <div className="mb-2">
+      <div className="mb-1">
         <h2 className="font-semibold text-xl mt-2">
           Education: <span className="text-sm font-normal">{education}</span>
         </h2>

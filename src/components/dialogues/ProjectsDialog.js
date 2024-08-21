@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -21,8 +21,8 @@ import { DialogueContext } from "@/hooks/DialogueContext";
 import { v4 as uuidv4 } from 'uuid';
 
 const ProjectsDialog = () => {
-  const { isModalOpen, closeModal, modalType, buttonType } = useContext(DialogueContext);
-  const { setProjects, projects } = useContext(ResumeContext);
+  const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
+  const { setProjects, projects, projectToEdit, setProjectToEdit } = useContext(ResumeContext);
   const [projectName, setProjectName] = useState("");
   const [descriptionPoints, setDescriptionPoints] = useState([""]);
   const [startMonth, setStartMonth] = useState("");
@@ -34,6 +34,19 @@ const ProjectsDialog = () => {
     "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
+
+  useEffect(() => {
+    if (projectToEdit) {
+      setProjectName(projectToEdit.projectName || "");
+      setDescriptionPoints(projectToEdit.projectPoints || [""]);
+      const [startMonth, startYear] = projectToEdit.startDate.split(" ");
+      setStartMonth(startMonth || "");
+      setStartYear(startYear || "");
+      const [endMonth, endYear] = projectToEdit.endDate.split(" ");
+      setEndMonth(endMonth || "");
+      setEndYear(endYear || "");
+    }
+  }, [projectToEdit]);
 
   const handleAddPoint = () => {
     if (descriptionPoints.length < 5) {
@@ -49,19 +62,23 @@ const ProjectsDialog = () => {
 
   const saveProject = () => {
     const newProject = {
-      id: uuidv4(),
+      id: projectToEdit?.id || uuidv4(),
       projectName,
       startDate: `${startMonth} ${startYear}`,
       endDate: `${endMonth} ${endYear}`,
       projectPoints: descriptionPoints.filter(point => point.trim() !== ""),
     };
 
-    if (projects.length === 1 && projects[0].projectName === "Default Project") {
-      setProjects([newProject]);
-      console.log(projects);
+    if (projectToEdit) {
+      // Edit existing project
+      setProjects(projects.map(project => project.id === newProject.id ? newProject : project));
     } else {
-      setProjects([...projects, newProject]);
-      console.log(projects);
+      // Add new project
+      if (projects.length === 1 && projects[0].projectName === "Default Project") {
+        setProjects([newProject]);
+      } else {
+        setProjects([...projects, newProject]);
+      }
     }
 
     closeModal();
@@ -71,13 +88,14 @@ const ProjectsDialog = () => {
     setStartYear("");
     setEndMonth("");
     setEndYear("");
+    setProjectToEdit(null);
   };
 
   return (
     <Dialog open={modalType === "projects" && isModalOpen} onOpenChange={closeModal}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="mb-3">Add a project</DialogTitle>
+          <DialogTitle className="mb-3">{projectToEdit ? "Edit Project" : "Add a Project"}</DialogTitle>
           <Label>Project Name</Label>
           <Input value={projectName} onChange={(e) => setProjectName(e.target.value)} />
           
