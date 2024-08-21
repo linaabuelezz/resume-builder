@@ -55,7 +55,7 @@ const Resume = () => {
                 <React.Fragment key={index}>
                   <TooltipProvider>
                     <div className="flex items-center space-x-1 relative">
-                      <Tooltip>
+                      <Tooltip delayDuration={100}>
                         <TooltipTrigger className="flex items-center">
                       <img
                         src={link.logo}
