@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { useContext, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ResumeContext } from "@/hooks/ResumeContext";
+import { v4 as uuidv4 } from "uuid";
 
 const CDN_URL = 'https://cdn.brandfetch.io/';
 
@@ -41,7 +42,7 @@ const SocialLinksDialog = () => {
 
   const saveLink = () => {
     const logo = fetchLogo(link);
-    setSocialLinks([...socialLinks, { link, logo }]);
+    setSocialLinks([...socialLinks, { id: uuidv4(), link, logo }]);
     setLink("");
     setLogoUrl("");
     closeModal();

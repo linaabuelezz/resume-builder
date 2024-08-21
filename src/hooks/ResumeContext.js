@@ -19,6 +19,7 @@ export const ResumeProvider = ({ children }) => {
   const [isFirstOpen, setIsFirstOpen] = useState(true);
   const [projectToEdit, setProjectToEdit] = useState(null);
   const [experienceToEdit, setExperienceToEdit] = useState(null);
+  const [socialLinkToEdit, setSocialLinkToEdit] = useState(null);
 
   useEffect(() => {
     if (isFirstOpen) {
@@ -43,6 +44,8 @@ export const ResumeProvider = ({ children }) => {
         setPhoneNumber,
         socialLinks,
         setSocialLinks,
+        socialLinkToEdit,
+        setSocialLinkToEdit,
         education,
         setEducation,
         gpa,

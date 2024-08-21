@@ -4,7 +4,7 @@ import { ResumeContext } from "@/hooks/ResumeContext";
 
 export const useDialogActions = () => {
     const { openModal } = useContext(DialogueContext);
-    const { projects, setProjectToEdit, experiences, setExperienceToEdit } = useContext(ResumeContext);
+    const { projects, setProjectToEdit, experiences, setExperienceToEdit, socialLinks, setSocialLinkToEdit } = useContext(ResumeContext);
 
     const handleProjectEdit = (projectId) => {
         const projectToEdit = projects.find(project => project.id === projectId);
@@ -26,8 +26,19 @@ export const useDialogActions = () => {
         return experienceId;
     };
 
+    const handleLinksEdit = (linkId) => {
+        const socialLinkToEdit = socialLinks.find(socialLink => socialLink.id === linkId);
+        if (socialLinkToEdit) {
+            setSocialLinkToEdit(socialLinkToEdit);
+            openModal("sociallinks", "edit", linkId);
+        };
+        console.log(linkId);
+        return linkId;
+    }
+
     return {
         handleProjectEdit,
         handleExperienceEdit,
+        handleLinksEdit
     };
 };
