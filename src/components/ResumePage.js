@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/tooltip";
 
 const Resume = () => {
-  const { handleProjectEdit, handleExperienceEdit } = useDialogActions();
+  const { handleProjectEdit, handleExperienceEdit, handleLinkEdit } = useDialogActions();
   const {
     name,
     email,
@@ -73,10 +73,23 @@ const Resume = () => {
                           </li>
                         </TooltipTrigger>
                         <TooltipContent className="flex justify-center items-center">
+                          <button 
+                          className="bg-gray-200 p-1 rounded hover:scale-105 mr-1"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleLinkEdit(
+                              link.id,
+                              socialLinks,
+                              setSocialLinks
+                            );
+                          }}
+                          >
+                            <FontAwesomeIcon icon={faEdit} />
+                          </button>
                           <button
                             className="bg-gray-200 p-1 rounded hover:scale-105"
                             onClick={(e) => {
-                              e.stopPropagation(); // Prevent triggering the link click
+                              e.stopPropagation(); 
                               handleSocialLinkDelete(
                                 link.id,
                                 socialLinks,

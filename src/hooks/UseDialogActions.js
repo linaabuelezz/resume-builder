@@ -26,7 +26,7 @@ export const useDialogActions = () => {
         return experienceId;
     };
 
-    const handleLinksEdit = (linkId) => {
+    const handleLinkEdit = (linkId) => {
         const socialLinkToEdit = socialLinks.find(socialLink => socialLink.id === linkId);
         if (socialLinkToEdit) {
             setSocialLinkToEdit(socialLinkToEdit);
@@ -39,6 +39,6 @@ export const useDialogActions = () => {
     return {
         handleProjectEdit,
         handleExperienceEdit,
-        handleLinksEdit
+        handleLinkEdit
     };
 };
