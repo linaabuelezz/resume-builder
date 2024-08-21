@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ExperienceDialog = () => {
   const { isModalOpen, closeModal, modalType } = useContext(DialogueContext);
-  const { setExperience, experiences } = useContext(ResumeContext);
+  const { setExperience, experiences, experienceToEdit, setExperienceToEdit } = useContext(ResumeContext);
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
   const [startMonth, setStartMonth] = useState("");
@@ -49,6 +49,20 @@ const ExperienceDialog = () => {
     "Dec",
   ];
 
+  useEffect(() => {
+    if (experienceToEdit) {
+      setCompanyName(experienceToEdit.companyName || "");
+      setJobPosition(experienceToEdit.jobPosition || "");
+      setDescriptionPoints(experienceToEdit.experiencePoints || [""]);
+      const [startMonth, startYear] = experienceToEdit.startDate.split(" ");
+      setStartMonth(startMonth || "");
+      setStartYear(startYear || "");
+      const [endMonth, endYear] = experienceToEdit.endDate.split(" ");
+      setEndMonth(endMonth || "");
+      setEndYear(endYear || "");
+    }
+  }, [experienceToEdit]);
+
   const handleAddPoint = () => {
     if (descriptionPoints.length < 5) {
       setDescriptionPoints([...descriptionPoints, ""]);
@@ -63,7 +77,7 @@ const ExperienceDialog = () => {
 
   const saveExperience = () => {
     const newExperience = {
-      id: uuidv4(),
+      id: experienceToEdit?.id || uuidv4(),
       companyName,
       jobPosition,
       experiencePoints: descriptionPoints.filter(
@@ -73,10 +87,9 @@ const ExperienceDialog = () => {
       endDate: `${endMonth} ${endYear}`,
     };
 
-    if (
-      experiences.length === 1 &&
-      experiences[0].companyName === "Company name"
-    ) {
+    if (experienceToEdit) {
+      setExperience(experiences.map(experience => experience.id === newExperience.id ? newExperience : experience));
+    } else if (experiences.length === 1 && experiences[0].companyName === "Company name") {
       setExperience([newExperience]);
     } else {
       setExperience([...experiences, newExperience]);

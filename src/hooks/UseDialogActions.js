@@ -4,7 +4,7 @@ import { ResumeContext } from "@/hooks/ResumeContext";
 
 export const useDialogActions = () => {
     const { openModal } = useContext(DialogueContext);
-    const { projects, setProjectToEdit } = useContext(ResumeContext);
+    const { projects, setProjectToEdit, experiences, setExperienceToEdit } = useContext(ResumeContext);
 
     const handleProjectEdit = (projectId) => {
         const projectToEdit = projects.find(project => project.id === projectId);
@@ -17,7 +17,11 @@ export const useDialogActions = () => {
     };
 
     const handleExperienceEdit = (experienceId) => {
-        openModal("experience", "edit", experienceId);
+        const experienceToEdit = experiences.find(experience => experience.id === experienceId);
+        if (experienceToEdit) {
+            setExperienceToEdit(experienceToEdit);
+            openModal("experience", "edit", experienceId);
+        };
         console.log(experienceId);
         return experienceId;
     };
