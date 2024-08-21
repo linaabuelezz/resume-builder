@@ -57,12 +57,12 @@ const Resume = () => {
                     <div className="flex items-center space-x-1 relative">
                       <Tooltip delayDuration={100}>
                         <TooltipTrigger className="flex items-center">
-                      <img
-                        src={link.logo}
-                        style={{ maxWidth: "20px", maxHeight: "20px" }}
-                        alt="logo"
-                        className="mr-1"
-                      />
+                          <img
+                            src={link.logo}
+                            style={{ maxWidth: "20px", maxHeight: "20px" }}
+                            alt="logo"
+                            className="mr-1"
+                          />
                           <li
                             key={link.id}
                             style={{ listStyle: "none" }}
@@ -127,56 +127,53 @@ const Resume = () => {
         <h2 className="font-bold text-xl">Experience</h2>
         <hr className="bg-black h-0.5 mb-1" />
         <ul>
-          {experiences?.map((experience, _) => {
-            console.log(experience.id);
-            return (
-              <li key={experience.id} className="mb-2 relative group">
-                <div className="flex justify-between items-center">
-                  <h3>
-                    <span className="font-semibold text-md">
-                      {experience.companyName}
-                    </span>
-                    {experience.companyName && experience.jobPosition && " | "}
-                    <span className="text-md">{experience.jobPosition}</span>
-                  </h3>
-                  <p className="text-sm group-hover:hidden">
-                    {experience.startDate} - {experience.endDate}
-                  </p>
-                </div>
-                <ul className="ml-4 list-disc">
-                  {experience.experiencePoints?.map((point, pointIndex) => (
-                    <li key={pointIndex} className="text-sm">
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
-                  onClick={() =>
-                    handleExperienceEdit(
-                      experience.id,
-                      experiences,
-                      setExperience
-                    )
-                  }
-                >
-                  <FontAwesomeIcon icon={faEdit} />
-                </button>
-                <button
-                  className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
-                  onClick={() =>
-                    handleExperienceDelete(
-                      experience.id,
-                      experiences,
-                      setExperience
-                    )
-                  }
-                >
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </button>
-              </li>
-            );
-          })}
+          {experiences?.map((experience, _) => (
+            <li key={experience.id} className="mb-2 relative group">
+              <div className="flex justify-between items-center">
+                <h3>
+                  <span className="font-semibold text-md">
+                    {experience.companyName}
+                  </span>
+                  {experience.companyName && experience.jobPosition && " | "}
+                  <span className="text-md">{experience.jobPosition}</span>
+                </h3>
+                <p className="text-sm group-hover:hidden">
+                  {experience.startDate} - {experience.endDate}
+                </p>
+              </div>
+              <ul className="ml-4 list-disc">
+                {experience.experiencePoints?.map((point, pointIndex) => (
+                  <li key={pointIndex} className="text-sm">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                onClick={() =>
+                  handleExperienceEdit(
+                    experience.id,
+                    experiences,
+                    setExperience
+                  )
+                }
+              >
+                <FontAwesomeIcon icon={faEdit} />
+              </button>
+              <button
+                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                onClick={() =>
+                  handleExperienceDelete(
+                    experience.id,
+                    experiences,
+                    setExperience
+                  )
+                }
+              >
+                <FontAwesomeIcon icon={faTrashCan} />
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
 

@@ -12,41 +12,19 @@ const InformationInputBox = () => {
         name, setName,
         email, setEmail,
         phoneNumber, setPhoneNumber,
-        socialLinks, setSocialLinks,
         education, setEducation,
         gpa, setGpa,
-        experiences, setExperience,
-        projects, setProjects
     } = useContext(ResumeContext);
-
-
-    // const handleSocialLinksChange = (index, value) => {
-    //     const newLinks = [...socialLinks];
-    //     newLinks[index] = value;
-    //     setSocialLinks(newLinks);
-    // };
-
-    // const handleExperienceChange = (index, value) => {
-    //     const newExperience = [...experiences];
-    //     newExperience[index] = value;
-    //     setExperience(newExperience);
-    // };
-
-    // const handleProjectsChange = (index, value) => {
-    //     const newProjects = [...projects];
-    //     newProjects[index] = value;
-    //     setProjects(newProjects);
-    // }
 
     return (
         <div className="form">
             <label>
                 Name:
-                <input defaultValue= "Jane Doe" className="bg-blue-50 rounded-md p-1" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <input defaultValue= "Jane Doe" className="bg-blue-50 rounded-md p-1" type="text"  onChange={(e) => setName(e.target.value)} />
             </label>
             <label>
                 Email:
-                <input defaultValue="janeDoe@gmail.com" className="bg-blue-50 rounded-md p-1" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input defaultValue="janeDoe@gmail.com" className="bg-blue-50 rounded-md p-1" type="text"  onChange={(e) => setEmail(e.target.value)} />
             </label>
             <label>
                 Phone number:

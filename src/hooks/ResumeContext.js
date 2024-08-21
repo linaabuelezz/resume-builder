@@ -10,28 +10,33 @@ export const ResumeProvider = ({ children }) => {
   const [education, setEducation] = useState("University of Chicago");
   const [gpa, setGpa] = useState("3.5");
   const [skills, setSkills] = useState({
-    Languages: [],
+    Languages: ["HTML", "CSS", "JavaScript"],
     Frameworks: [],
     Libraries: [],
   });
-  const [experiences, setExperience] = useState([{}]);
-  const [projects, setProjects] = useState([{}]);
-  const [isFirstOpen, setIsFirstOpen] = useState(true);
+  const [experiences, setExperience] = useState([
+    {
+      id: "1",
+      companyName: "Company name",
+      jobPosition: "Intern",
+      startDate: "Mar 2023",
+      endDate: "Dec 2023",
+      experiencePoints: ["Initial point 1", "Initial point 2"],
+    },
+  ]);
+  const [projects, setProjects] = useState([
+    {
+      id: "1",
+      projectName: "Default Project",
+      startDate: "Jan 2024",
+      endDate: "Feb 2024",
+      projectPoints: ["Initial point 1", "Initial point 2"],
+    },
+  ]);
   const [projectToEdit, setProjectToEdit] = useState(null);
   const [experienceToEdit, setExperienceToEdit] = useState(null);
   const [socialLinkToEdit, setSocialLinkToEdit] = useState(null);
 
-  useEffect(() => {
-    if (isFirstOpen) {
-      setProjects([{id: "1", projectName: "Default Project", startDate: "Jan 2024", endDate: "Feb 2024", projectPoints: ["Initial point 1", "Initial point 2"] }]);
-      setExperience([{id: "1", companyName: "Company name", jobPosition: "Intern", startDate: "Mar 2023", endDate: "Dec 2023", experiencePoints: ["Initial point 1", "Initial point 2"]}]);
-      setSkills({Languages: ["HTML", "CSS", "JavaScript"],
-        Frameworks: [],
-        Libraries: []
-      })
-      setIsFirstOpen(false);
-    }
-  }, [isFirstOpen]);
 
   return (
     <ResumeContext.Provider
@@ -59,7 +64,7 @@ export const ResumeProvider = ({ children }) => {
         projectToEdit,
         setProjectToEdit,
         experienceToEdit,
-        setExperienceToEdit
+        setExperienceToEdit,
       }}
     >
       {children}
