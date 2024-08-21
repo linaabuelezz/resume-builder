@@ -127,29 +127,33 @@ const Resume = () => {
         <h2 className="font-bold text-xl">Experience</h2>
         <hr className="bg-black h-0.5 mb-1" />
         <ul>
-          {experiences?.map((experience, _) => (
+          {experiences?.map((experience) => (
             <li key={experience.id} className="mb-2 relative group">
-              <div className="flex justify-between items-center">
-                <h3>
-                  <span className="font-semibold text-md">
-                    {experience.companyName}
-                  </span>
-                  {experience.companyName && experience.jobPosition && " | "}
-                  <span className="text-md">{experience.jobPosition}</span>
-                </h3>
-                <p className="text-sm group-hover:hidden">
-                  {experience.startDate} - {experience.endDate}
-                </p>
+              <div className="absolute inset-0 rounded bg-gray-300 opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+
+              <div className="relative z-10 p-2">
+                <div className="flex justify-between items-center">
+                  <h3>
+                    <span className="font-semibold text-md">
+                      {experience.companyName}
+                    </span>
+                    {experience.companyName && experience.jobPosition && " | "}
+                    <span className="text-md">{experience.jobPosition}</span>
+                  </h3>
+                  <p className="text-sm">
+                    {experience.startDate} - {experience.endDate}
+                  </p>
+                </div>
+                <ul className="ml-4 list-disc">
+                  {experience.experiencePoints?.map((point, pointIndex) => (
+                    <li key={pointIndex} className="text-sm">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="ml-4 list-disc">
-                {experience.experiencePoints?.map((point, pointIndex) => (
-                  <li key={pointIndex} className="text-sm">
-                    {point}
-                  </li>
-                ))}
-              </ul>
               <button
-                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                className="absolute top-0 right-7 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
                 onClick={() =>
                   handleExperienceEdit(
                     experience.id,
@@ -161,7 +165,7 @@ const Resume = () => {
                 <FontAwesomeIcon icon={faEdit} />
               </button>
               <button
-                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                className="absolute top-0 right-0 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
                 onClick={() =>
                   handleExperienceDelete(
                     experience.id,
@@ -181,24 +185,30 @@ const Resume = () => {
         <h2 className="font-bold text-xl">Projects</h2>
         <hr className="bg-black h-0.5 mb-1" />
         <ul>
-          {projects.map((project, _) => (
+          {projects.map((project) => (
             <li key={project.id} className="mb-2 relative group">
-              <div className="flex justify-between items-center">
-                <h3 className="font-semibold text-md">{project.projectName}</h3>
-                <p className="text-sm group-hover:hidden">
-                  {project.startDate} - {project.endDate}
-                </p>
+              <div className=" rounded absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+
+              <div className="relative z-10 p-2">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-semibold text-md">
+                    {project.projectName}
+                  </h3>
+                  <p className="text-sm">
+                    {project.startDate} - {project.endDate}
+                  </p>
+                </div>
+                <ul className="ml-4 list-disc">
+                  {project.projectPoints?.map((point, pointIndex) => (
+                    <li key={pointIndex} className="text-sm">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="ml-4 list-disc">
-                {project.projectPoints?.map((point, pointIndex) => (
-                  <li key={pointIndex} className="text-sm">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-              {/* Edit Button */}
+
               <button
-                className="absolute top-0 right-7 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                className="absolute top-0 right-7 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
                 onClick={() => {
                   handleProjectEdit(project.id, projects, setProjects);
                 }}
@@ -206,7 +216,7 @@ const Resume = () => {
                 <FontAwesomeIcon icon={faEdit} />
               </button>
               <button
-                className="absolute top-0 right-0 hidden group-hover:block bg-gray-200 p-1 rounded hover:scale-105"
+                className="absolute top-0 right-0 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
                 onClick={() =>
                   handleProjectDelete(project.id, projects, setProjects)
                 }
