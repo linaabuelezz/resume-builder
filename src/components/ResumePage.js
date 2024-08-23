@@ -16,7 +16,8 @@ import {
 } from "@/components/ui/tooltip";
 
 const Resume = () => {
-  const { handleProjectEdit, handleExperienceEdit, handleLinkEdit } = useDialogActions();
+  const { handleProjectEdit, handleExperienceEdit, handleLinkEdit } =
+    useDialogActions();
   const {
     name,
     email,
@@ -73,23 +74,23 @@ const Resume = () => {
                           </li>
                         </TooltipTrigger>
                         <TooltipContent className="flex justify-center items-center">
-                          <button 
-                          className="bg-gray-200 p-1 rounded hover:scale-105 mr-1"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleLinkEdit(
-                              link.id,
-                              socialLinks,
-                              setSocialLinks
-                            );
-                          }}
+                          <button
+                            className="bg-gray-200 p-1 rounded hover:scale-105 mr-1"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleLinkEdit(
+                                link.id,
+                                socialLinks,
+                                setSocialLinks
+                              );
+                            }}
                           >
                             <FontAwesomeIcon icon={faEdit} />
                           </button>
                           <button
                             className="bg-gray-200 p-1 rounded hover:scale-105"
                             onClick={(e) => {
-                              e.stopPropagation(); 
+                              e.stopPropagation();
                               handleSocialLinkDelete(
                                 link.id,
                                 socialLinks,
@@ -164,31 +165,34 @@ const Resume = () => {
                     </li>
                   ))}
                 </ul>
+                {/* Edit and Delete buttons below the dates */}
+                <div className="flex justify-end gap-2 mt-2 hidden group-hover:flex">
+                  <button
+                    className="z-20 bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
+                    onClick={() =>
+                      handleExperienceEdit(
+                        experience.id,
+                        experiences,
+                        setExperience
+                      )
+                    }
+                  >
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button
+                    className="z-20 bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
+                    onClick={() =>
+                      handleExperienceDelete(
+                        experience.id,
+                        experiences,
+                        setExperience
+                      )
+                    }
+                  >
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </button>
+                </div>
               </div>
-              <button
-                className="absolute top-0 right-7 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
-                onClick={() =>
-                  handleExperienceEdit(
-                    experience.id,
-                    experiences,
-                    setExperience
-                  )
-                }
-              >
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
-              <button
-                className="absolute top-0 right-0 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
-                onClick={() =>
-                  handleExperienceDelete(
-                    experience.id,
-                    experiences,
-                    setExperience
-                  )
-                }
-              >
-                <FontAwesomeIcon icon={faTrashCan} />
-              </button>
             </li>
           ))}
         </ul>
@@ -200,7 +204,7 @@ const Resume = () => {
         <ul>
           {projects.map((project) => (
             <li key={project.id} className="mb-2 relative group">
-              <div className=" rounded absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+              <div className="rounded absolute inset-0 bg-gray-300 opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
 
               <div className="relative z-10 p-2">
                 <div className="flex justify-between items-center">
@@ -218,24 +222,26 @@ const Resume = () => {
                     </li>
                   ))}
                 </ul>
+                {/* Edit and Delete buttons below the dates */}
+                <div className="flex justify-end gap-2 mt-2 hidden group-hover:flex">
+                  <button
+                    className="z-20 bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
+                    onClick={() => {
+                      handleProjectEdit(project.id, projects, setProjects);
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button
+                    className="z-20 bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
+                    onClick={() =>
+                      handleProjectDelete(project.id, projects, setProjects)
+                    }
+                  >
+                    <FontAwesomeIcon icon={faTrashCan} />
+                  </button>
+                </div>
               </div>
-
-              <button
-                className="absolute top-0 right-7 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
-                onClick={() => {
-                  handleProjectEdit(project.id, projects, setProjects);
-                }}
-              >
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
-              <button
-                className="absolute top-0 right-0 z-20 hidden group-hover:block bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
-                onClick={() =>
-                  handleProjectDelete(project.id, projects, setProjects)
-                }
-              >
-                <FontAwesomeIcon icon={faTrashCan} />
-              </button>
             </li>
           ))}
         </ul>
