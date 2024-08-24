@@ -42,7 +42,7 @@ const Resume = () => {
   };
 
   return (
-    <div className="resume">
+    <div className="resume pt-16">
       <h1 className="text-center font-bold text-3xl">{name}</h1>
       <p className="text-center text-sm mb-0.5">
         {email} | {phoneNumber}
