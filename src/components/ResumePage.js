@@ -166,7 +166,7 @@ const Resume = () => {
                   ))}
                 </ul>
                 {/* Edit and Delete buttons below the dates */}
-                <div className="flex justify-end gap-2 mt-2 hidden group-hover:flex">
+                <div className=" justify-end gap-2 mt-2 hidden group-hover:flex">
                   <button
                     className="z-20 bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
                     onClick={() =>
@@ -223,7 +223,7 @@ const Resume = () => {
                   ))}
                 </ul>
                 {/* Edit and Delete buttons below the dates */}
-                <div className="flex justify-end gap-2 mt-2 hidden group-hover:flex">
+                <div className="justify-end gap-2 mt-2 hidden group-hover:flex">
                   <button
                     className="z-20 bg-black text-white p-1 rounded transition-transform transform hover:scale-105"
                     onClick={() => {

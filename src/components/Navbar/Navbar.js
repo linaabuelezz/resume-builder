@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,16 +22,13 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleResumeClick = () => {
-    window.open(
-      "https://drive.google.com/file/d/1K98QKfhA64irS7LK2dSMGNjE-QOIUKmJ/view?usp=sharing",
-      "_blank"
-    );
-  };
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const handleLogout = () => {
+    router.push('/LoginPage');
+  }
 
   return (
     <nav
@@ -42,26 +42,26 @@ const Navbar = () => {
             <h1 className="text-white text-xl font-bold">Resume Builder</h1>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <text
-              to="/"
+            <Link
+              href="/"
               className="text-white hover:cursor-pointer hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium"
             >
               Home
-            </text>
-            <text
-              to="/about"
+            </Link>
+            <Link
+              href="/About"
               className="text-white hover:cursor-pointer hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium"
             >
               About Us
-            </text>
-            <text
-              to="/premium"
+            </Link>
+            <Link
+              href="/Premium"
               className="text-white hover:cursor-pointer hover:text-blue-200 px-3 py-2 rounded-md text-sm font-medium"
             >
               Premium
-            </text>
+            </Link>
             <button
-              onClick={handleResumeClick}
+            onClick={handleLogout}
               className="bg-blue-700 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-md"
             >
               Log out
@@ -120,27 +120,27 @@ const Navbar = () => {
                 </button>
               </div>
               <div className="space-y-4">
-                <text
-                  to="/"
+                <Link
+                  href="/"
                   onClick={toggleMenu}
                   className="text-gray-800 hover:cursor-pointer hover:text-blue-200 block text-xl"
                 >
                   Home
-                </text>
-                <text
-                  to="/about"
+                </Link>
+                <Link
+                  href="/About"
                   onClick={toggleMenu}
                   className="text-gray-800 hover:cursor-pointer hover:text-blue-200 block text-xl"
                 >
                   About Us
-                </text>
-                <text
-                  to="/premium"
+                </Link>
+                <Link
+                  href="/Premium"
                   onClick={toggleMenu}
                   className="text-gray-800 hover:cursor-pointer hover:text-blue-200 block text-xl"
                 >
                   Premium
-                </text>
+                </Link>
                 <button className="bg-blue-700 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded w-full text-center">
                   Log out
                 </button>

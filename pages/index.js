@@ -1,4 +1,4 @@
-"use client";
+
 import { ResumeProvider } from "@/hooks/ResumeContext";
 import Resume from "@/components/ResumePage";
 import InformationInputBox from "@/components/InformationInputBox";
@@ -8,8 +8,9 @@ import ExperienceDialog from "@/components/dialogues/ExperienceDialog";
 import ProjectsDialog from "@/components/dialogues/ProjectsDialog";
 import SkillsDialog from "@/components/dialogues/SkillsDialog";
 import Navbar from "@/components/Navbar/Navbar";
+import '../src/app/globals.css';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Navbar />
@@ -31,4 +32,6 @@ export default function Home() {
       </DialogueProvider>
     </>
   );
-}
+};
+
+export default Home;
